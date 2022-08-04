@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+}
+.design{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+.design img{
+    height: 178px;
+    width: 180px;
+    margin-top: 168px;
+    margin-bottom: 32px;
+}
+
+
+
+
