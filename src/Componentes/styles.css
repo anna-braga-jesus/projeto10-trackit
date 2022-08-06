@@ -1,19 +1,98 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-.design{
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
+.app{
+  width: 480px;
 }
-.design img{
-    height: 178px;
-    width: 180px;
-    margin-top: 168px;
-    margin-bottom: 32px;
+.design {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-
-
-
+.design img {
+  height: 178px;
+  width: 180px;
+  margin-top: 168px;
+  margin-bottom: 32px;
+}
+.texto-padrao{
+  width: 338px;
+  height: 74px;
+  color: #666666;
+  text-align: center;
+}
+.title{
+  width: 148px;
+  height: 29px;
+  color: #126BA5;
+  font-family:'Lexend Deca', sans-serif; 
+  font-size: 23px;
+  font-weight: 400;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px;
+}
+.texto-circulo{
+  color: #FFFFFF;
+  font-family:'Lexend Deca', sans-serif; 
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+.Perfil{
+  height: 51px;
+  width: 100%;
+  border-radius: 50%;
+}
+.off{
+  display: none;
+  background-color: red;
+}
+.show{
+  display: flex;
+  background-color: #eee;
+  width: 100%;
+  border-radius: 6px;
+  color: dodgerblue;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: space-between;
+  padding: 32px 12px;
+}
+.show input[type='text']{
+  height: 32px;
+}
+.show .botoes :nth-child(1) {
+  height: 32px;
+  width: 96px;
+  border: #999;
+  border-radius: 8px;
+  color: dodgerblue;
+  background-color: transparent;
+}
+.show .botoes :nth-child(2) {
+  height: 32px;
+  width: 96px;
+  border: #999;
+  border-radius: 8px;
+  color: #ddd;
+  background-color: dodgerblue;
+}
+.show .botoes{
+  display: flex;
+  justify-content: flex-end;
+}
+.show input[type='checkbox']{
+  padding: 4px;
+}
+.eixo .dias{
+  background-color: white;
+}
+.eixo .botoes{
+  color: white;
+}

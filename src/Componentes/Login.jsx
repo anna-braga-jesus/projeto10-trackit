@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
@@ -6,6 +6,9 @@ import { useNavigate ,Link } from "react-router-dom";
 import Button from "./Button";
 import Logo from "./Logo";
 import "./styles.css";
+import { UserContext } from "./App";
+
+
 
 const Input = styled.input`
   height: 45px;
@@ -34,6 +37,10 @@ const Texto = styled.p`
 //Senha teste: 12345
 
 export default function Login() {
+
+  let oi = useContext(UserContext);
+
+
   const [email, setEmail] = useState("");
   const [password,setPassword] = useState("");
 
@@ -63,12 +70,12 @@ export default function Login() {
        navigate('/hoje');
        setToken(promise.data.token);
        setImage(promise.data.image);
-       localStorage.setItem('token',promise.data.token);
-       localStorage.setItem('image',promise.data.image);
-       console.log(`
-       email: ${userData["email"]}
-       senha: ${userData["password"]}
-      `)
+       localStorage.setItem('user', promise.data);
+       console.log(promise.data)
+       oi.setUser(
+        {name: promise.data.name, image: promise.data.image, token: promise.data.token, email: promise.data.email, id:promise.data.id, password: promise.data.password}
+       )
+       
      });
   
      promise.catch((error)=>{
@@ -76,39 +83,48 @@ export default function Login() {
        setText( 'Entrar' );
      });
    }
-  
+   function getImage (){
+    const localImage = localStorage.getItem('ImageAnna');
+     if ( localImage !== undefined && localImage !== null && localImage !== '') {
+      return localStorage.getItem('ImageAnna') ;
+    } else {
+      return '';
+    }
+  }
 
 
   return (
-    <form onSubmit={login}>
-      <div className="design">
-        <Logo />
-        <Input
-          type="email"
-          placeholder="email"
-          required
-           value={userData.email} disabled={disable}
-                   onChange={ e => setUserData({...userData, email: e.target.value })}
-                  
-          
-        />
-        <Input
-          type="password"
-          placeholder="senha"
-          required
-          value={userData.password} disabled={disable}
-          onChange={ e => setUserData({...userData, password: e.target.value }) }  
-          
-        />
-        
-          <Button type='submit' />
-          
 
-         {disable ? <Texto>Não tem uma conta? Cadastre-se! </Texto>
-        : <Link to="/cadastro">
-          <Texto>Não tem uma conta? Cadastre-se! </Texto>
-        </Link> } 
-      </div>
-    </form>
+        <form onSubmit={login}>
+          <div className="design">
+            <Logo />
+            <Input
+              type="email"
+              placeholder="email"
+              required
+              value={userData.email} disabled={disable}
+                      onChange={ e => setUserData({...userData, email: e.target.value })}
+                      
+              
+            />
+            <Input
+              type="password"
+              placeholder="senha"
+              required
+              value={userData.password} disabled={disable}
+              onChange={ e => setUserData({...userData, password: e.target.value }) }  
+              
+            />
+            
+                  <Button type='submit' />
+            
+              
+
+            {disable ? <Texto>Não tem uma conta? Cadastre-se! </Texto>
+            : <Link to="/cadastro">
+              <Texto>Não tem uma conta? Cadastre-se! </Texto>
+            </Link> } 
+          </div>
+        </form>
   );
 }
