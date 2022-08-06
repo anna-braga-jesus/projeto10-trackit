@@ -13,22 +13,22 @@ const CRIARHÁBITO =
   PEGARHÁBITO =
     "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-    function getHabit(tokens){
-      const CONFIG = { headers: { Authorization: `Bearer ${tokens}` } };
-      const promise = axios.get(PEGARHÁBITO, CONFIG)
-      .then(
-          a => {
-              console.log(a);
-          }
-      )
-  }
+function getHabit(tokens) {
+  const CONFIG = { headers: { Authorization: `Bearer ${tokens}` } };
+  const promise = axios.get(PEGARHÁBITO, CONFIG).then((a) => {
+    console.log(a);
+  });
+}
 
 async function newHabit(value, tokens) {
   const forminha = {
     name: "Nome do hábito",
-    days: [1, 3, 5] // segunda, quarta e sexta
-  }
-  const CONFIG = { body: forminha, headers: { Authorization: `Bearer ${tokens}` } };
+    days: [1, 3, 5], // segunda, quarta e sexta
+  };
+  const CONFIG = {
+    body: forminha,
+    headers: { Authorization: `Bearer ${tokens}` },
+  };
 
   const promise = axios.post(CRIARHÁBITO, CONFIG);
   promise.then(() => {});
@@ -69,38 +69,62 @@ export default function Conteudo() {
 }
 function CriarHabito(props) {
   let qualquer = useContext(UserContext);
-  let [dias,setDias] = useState({
-    segunda:false, 
-    terca:false, 
-    quarta:false,
-    quinta:false,
-    sexta:false, 
-    sabado:false, 
-    domingo:false
+  let [dias, setDias] = useState({
+    segunda: false,
+    terca: false,
+    quarta: false,
+    quinta: false,
+    sexta: false,
+    sabado: false,
+    domingo: false,
   });
-  function Chamamento(){newHabit(undefined,qualquer.tokens)  }
+  function Chamamento() {
+    newHabit(undefined, qualquer.tokens);
+  }
   return (
-    
-      <div className={props.show}>
-        <input type="text" />
-        <div className="dias">
-          {/* <div onClick={setDias({segunda:!dias['segunda']})}/>
+    <Container>
+      <form>
+        <div className={props.show}>
+          <input type="text" />
+          <div className="dias">
+            <Week>
+              <Day> D </Day>
+              <Day> S </Day>
+              <Day> T </Day>
+              <Day> Q </Day>
+              <Day> Q </Day>
+              <Day> S </Day>
+              <Day> S </Day>
+            </Week>
+
+            {/* <div onClick={setDias({segunda:!dias['segunda']})}/>
           <div onClick={setDias({terca:!dias['terca']})}/>
           <div onClick={setDias({quarta:!dias['quarta']})}/>
           <div onClick={setDias({quinta:!dias['quinta']})}/>
           <div onClick={setDias({sexta:!dias['sexta']})}/>
           <div onClick={setDias({sabado:!dias['sabado']})}/>
           <div onClick={setDias({domingo:!dias['domingo']})}/> */}
+          </div>
+          <div className="botoes">
+            <button>Cancelar</button>
+            <button onClick={Chamamento}>Salvar</button>
+          </div>
         </div>
-        <div className="botoes">
-          <button>Cancelar</button>
-          <button onClick={Chamamento}>Criar</button>
-        </div>
-      </div>
-    
+      </form>
+    </Container>
   );
 }
 function Habito() {
+  const [clicked, setClicked] = useState({
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+  });
+
   return (
     <div>
       <>
@@ -119,13 +143,20 @@ function Habito() {
 }
 
 const Container = styled.section`
-  width: 100%;
-  overflow-y: scroll;
-  height: 100vh;
-  margin: 0;
+  height: 91px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+  input {
+    margin: 19px;
+    font-size: 20px;
+  }
+  p {
+    margin: 13px 19px;
+    font-size: 20px;
+  }
 `;
 const ButtonService = styled.button`
   color: white;
@@ -158,4 +189,32 @@ const Add = styled.div`
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
+`;
+const Day = styled.div`
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  margin-right: 4px;
+  cursor: pointer;
+`;
+const Week = styled.div`
+  display: flex;
+  margin-left: 19px;
+`;
+const Delete = styled.button`
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border-radius: 5px;
+  color: var(--text-color);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  bottom: 55px;
+  right: -100px;
+  position: absolute;
 `;
