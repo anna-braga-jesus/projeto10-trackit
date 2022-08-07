@@ -67,21 +67,9 @@
 .show input[type='text']{
   height: 32px;
 }
-.show .botoes :nth-child(1) {
-  height: 32px;
-  width: 96px;
-  border: #999;
-  border-radius: 8px;
-  color: dodgerblue;
-  background-color: transparent;
-}
+
 .show .botoes :nth-child(2) {
-  height: 32px;
-  width: 96px;
-  border: #999;
-  border-radius: 8px;
-  color: #ddd;
-  background-color: dodgerblue;
+  
 }
 .show .botoes{
   display: flex;

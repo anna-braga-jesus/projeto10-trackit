@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { ThreeDots } from 'react-loader-spinner'
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate ,Link } from "react-router-dom";
@@ -37,7 +38,7 @@ const Texto = styled.p`
 //Senha teste: 12345
 
 export default function Login() {
-
+  const [loading, setLoading] = useState(false)
   let oi = useContext(UserContext);
 
 
@@ -45,9 +46,8 @@ export default function Login() {
   const [password,setPassword] = useState("");
 
 
- 
+  const { token,setToken} = useContext(UserContext);
    const [userData, setUserData] = useState({email:'',password:''});
-   const [token, setToken] = useState("");
    const [image, setImage] = useState("");
    const [item,SetItem] = useState("");
    const[user,setUser]= useState(); //Tipos: pode ser IUser ou pode ser null, controla autorizaçao
@@ -63,11 +63,13 @@ export default function Login() {
  
    function login(e){
      e.preventDefault();
+     setLoading(true);
      const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login';
      const promise = axios.post(URL, { email: userData.email, password: userData.password });
   
      promise.then((promise)=>{
        navigate('/hoje');
+       setLoading(false);
        setToken(promise.data.token);
        setImage(promise.data.image);
        localStorage.setItem('user', promise.data);
@@ -75,12 +77,13 @@ export default function Login() {
        oi.setUser(
         {name: promise.data.name, image: promise.data.image, token: promise.data.token, email: promise.data.email, id:promise.data.id, password: promise.data.password}
        )
-       
+       console.log(token)
      });
   
      promise.catch((error)=>{
        setDisable(false);
        setText( 'Entrar' );
+       setLoading(false);
      });
    }
    function getImage (){
@@ -95,7 +98,7 @@ export default function Login() {
 
   return (
 
-        <form onSubmit={login}>
+        <form onSubmit={login} disable={loading}>
           <div className="design">
             <Logo />
             <Input
@@ -116,8 +119,11 @@ export default function Login() {
               
             />
             
-                  <Button type='submit' />
-            
+                <Button type="submit">
+                    {loading ? <ThreeDots color="#FFF" height={50} width={50} /> : 'Entrar'}
+                </Button>
+                  
+                
               
 
             {disable ? <Texto>Não tem uma conta? Cadastre-se! </Texto>

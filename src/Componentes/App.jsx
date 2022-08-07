@@ -15,11 +15,13 @@ export const UserContext = React.createContext();
 
 //import { AuthProvider} from
 export default function App() {
+	const [token, setToken] = useState("");
+
 	let [user, setUser] = useState({
 		name: '', image: '', token: '', email: '', id:'', password: ''
 	})
   return (
-		<UserContext.Provider value={ {user, setUser} }>
+		<UserContext.Provider value={ {user, setUser,token,setToken} }>
 			<div className="app">
 			<BrowserRouter>
 			<GlobalStyle />

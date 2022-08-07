@@ -3,14 +3,17 @@ import Footer from "./Footer";
 import styled, { css } from "styled-components";
 //import { useEffect } from "react";
 //import axios from 'axios';
-
+import dayjs from "dayjs";
+import 'dayjs/locale/pt-br' 
 
 
 export default function Today() {
-//   const { token, Rate } = useContext(UserContext);
-//   const date = dayjs().locale("pt-br").format("dddd, DD/MM");
-//   const formatedDate = date[0].toUpperCase() + date.substring(1);
-//   const [habitsList, setHabitsList] = useState([]);
+ 
+  //   const { token, Rate } = useContext(UserContext);
+  //   const [habitsList, setHabitsList] = useState([]);
+   const date = dayjs().locale('pt-br').format('dddd, DD/MM');
+  //  const dias = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta","Sábado"]
+  
 
 //   useEffect(() => {
 //     if (token.length > 0) getList(token);
@@ -19,7 +22,14 @@ export default function Today() {
 //   function loadList(load) {
 //     if (load) getList(token);
 //   }
-
+      // function FormatarData(str){
+      //   const weekDay = dias.find((_, i) => i === dayjs().day())
+      //   const day = dayjs().date()
+      //   let month = dayjs().month()
+      //   month < 10 ? month = `0${month + 1}` : month = month + 1
+      //   return `${weekDay}, ${day}/${month}`
+      // }
+     
 //   function getList(token) {
 //     const CONFIG = { headers: { Authorization: `Bearer ${token}` } };
 //     const URL =
@@ -36,13 +46,17 @@ export default function Today() {
   //      )
   //    );
   //  }
+  
   return (
     <>
       <Topo />
       <Container>
+        
         <Title>
-            {/* {`${formatedDate}`} */}
-            Quinta-feira</Title>
+           {date}    
+           {/* {FormatarData()} */}
+          </Title>
+            
         <Subtitle 
         // done={true}
         >

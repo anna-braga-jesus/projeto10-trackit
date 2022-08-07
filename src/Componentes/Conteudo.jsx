@@ -6,41 +6,27 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { UserContext } from "./App";
 // import { useEffect } from "react";
-// import { useContext } from "react";
 
-const CRIARHÁBITO =
-    "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-  PEGARHÁBITO =
-    "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-function getHabit(tokens) {
-  const CONFIG = { headers: { Authorization: `Bearer ${tokens}` } };
-  const promise = axios.get(PEGARHÁBITO, CONFIG).then((a) => {
-    console.log(a);
-  });
-}
-
-async function newHabit(value, tokens) {
-  const forminha = {
-    name: "Nome do hábito",
-    days: [1, 3, 5], // segunda, quarta e sexta
-  };
-  const CONFIG = {
-    body: forminha,
-    headers: { Authorization: `Bearer ${tokens}` },
-  };
-
-  const promise = axios.post(CRIARHÁBITO, CONFIG);
-  promise.then(() => {});
-}
 
 export default function Conteudo() {
-  const [habitsList, setHabitsList] = useState([]);
   const [criarHabitos, setCriarHabitos] = useState("show");
-  let qualquer = useContext(UserContext);
+  const { token } = useContext(UserContext);
+  console.log(token);
+  let { qualquer } = useContext(UserContext);
+  const [entrada, setEntrada] = useState("");
+
+  // function getHabit() {
+
+  //   const pegarhabito = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+  //   const config = { headers: { Authorization: `Bearer ${token}` } };
+  //   const promise = axios.get({pegarhabito},{name:'oi', days:[1,2]}, config).then((a) => {
+  //     console.log(a);
+  //   });
+  // }
 
   //let habitos = await getHabit()
-  getHabit(qualquer.token);
+  // getHabit(qualquer.token);
   function showHabits() {
     if (criarHabitos === "off") {
       setCriarHabitos("show");
@@ -67,8 +53,8 @@ export default function Conteudo() {
     </>
   );
 }
-function CriarHabito(props) {
-  let qualquer = useContext(UserContext);
+function CriarHabito({show ,e, token,entrada,setEntrada }) {
+  let { qualquer } = useContext(UserContext);
   let [dias, setDias] = useState({
     segunda: false,
     terca: false,
@@ -78,14 +64,43 @@ function CriarHabito(props) {
     sabado: false,
     domingo: false,
   });
-  function Chamamento() {
-    newHabit(undefined, qualquer.tokens);
+  //  function Chamamento() {
+  //    HabitoNovo(undefined, qualquer.token);
+  // }
+  function HabitoNovo({entrada, setEntrada }) {
+
+    e.preventDefault();
+    const [habitsList, setHabitsList] = useState([]);
+
+    const criarhabito =
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+    const forminha = {
+      name: entrada,
+      days: [1, 3, 5], // segunda, quarta e sexta
+    };
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    const promise = axios.post({ criarhabito }, forminha, config);
+    promise.then((response) => {
+      setHabitsList(response.data);
+      console.log("Deu certo!");
+    });
   }
   return (
     <Container>
-      <form>
-        <div className={props.show}>
-          <input type="text" />
+      <form onSubmit={HabitoNovo}>
+        <div className={show}>
+          <input
+            type="text"
+            name="habit"
+            value={entrada}
+            placeholder="nome do habito"
+            onChange={(e) => {
+              setEntrada(e.target.value);
+            }}
+          />
           <div className="dias">
             <Week>
               <Day> D </Day>
@@ -106,14 +121,15 @@ function CriarHabito(props) {
           <div onClick={setDias({domingo:!dias['domingo']})}/> */}
           </div>
           <div className="botoes">
-            <button>Cancelar</button>
-            <button onClick={Chamamento}>Salvar</button>
+            <ButtonDelete>Cancelar</ButtonDelete>
+            <ButtonSave type="submit">Salvar</ButtonSave>
           </div>
         </div>
       </form>
     </Container>
   );
 }
+
 function Habito() {
   const [clicked, setClicked] = useState({
     0: false,
@@ -166,6 +182,25 @@ const ButtonService = styled.button`
   border: none;
   cursor: pointer;
   background-color: #52b6ff;
+`;
+const ButtonDelete = styled.button`
+  height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #52b6ff;
+  width: 96px;
+  border: #999;
+  color: dodgerblue;
+  background-color: transparent;
+`;
+const ButtonSave = styled.button`
+  color: white;
+  height: 35px;
+  width: 96px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #52b6ff;
+  border: #999;
 `;
 
 const P = styled.p`
