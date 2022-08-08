@@ -13,6 +13,8 @@ const date = dayjs().locale('pt-br').format('dddd, DD/MM');
 let updateLocale = require('dayjs/plugin/updateLocale');
 dayjs.extend(updateLocale);
 
+//.replace("-feira", "") sem a biblioteca e UpperCase
+
 dayjs.updateLocale('pt-br', {
   weekdays:[
      "Domingo",
