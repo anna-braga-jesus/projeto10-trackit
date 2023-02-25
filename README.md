@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+## O TrackIt é uma aplicação completa de acompanhamento de hábitos.  
+Esse foi o 10º projeto que eu realizei na Driven Education. Tem consumo de api externa,  cadastro, login, bibliotecas e muito mais!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Algumas das tecnologias e ferramentas
+- JavaScript;
+- API REST/RESTFULL conforme documentação;
+- Layout Figma;
+- Css implementado utilizando Styled Components;
+- Biblioteca DayJs, react-loader-spinner e react-circular-progressbar;
+- Context API .
 
-## Available Scripts
+## Funcionalidades e rotas aplicadas
+- POST Fazer cadastro;
+- POST Fazer login ;
+- POST Criar hábito;
+- GET Listar hábitos; 
+- DELETE Deletar hábito;
+- GET Buscar hábitos de hoje;
+- POST Marcar hábito como feito; 
+- POST Desmarcar hábito como feito;
+- GET Histórico de hábitos diários.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Layout
+![Screenshot from 2023-02-25 09-58-44](https://user-images.githubusercontent.com/107212599/221361201-dc2fdfcf-b303-43bd-8d35-61566b5931d2.png)
+![Screenshot from 2023-02-25 09-58-28](https://user-images.githubusercontent.com/107212599/221361202-59dce7b3-1eda-4f53-8bcd-bb24178c3ee5.png)
+![Screenshot from 2023-02-25 09-59-24](https://user-images.githubusercontent.com/107212599/221361203-9b036d2a-f7f4-4465-99fc-9a4d444298c8.png)
+![Screenshot from 2023-02-25 09-59-07](https://user-images.githubusercontent.com/107212599/221361204-651de4af-80a1-4cd6-a12c-74494522444e.png)
+![Screenshot from 2023-02-25 09-59-01](https://user-images.githubusercontent.com/107212599/221361205-64464ba3-cb91-4c3f-bf41-04b97eab50e0.png)
+![Screenshot from 2023-02-25 09-59-38](https://user-images.githubusercontent.com/107212599/221361206-9b33d5bf-5bb1-447d-b608-1dd2345dd263.png)
+![Screenshot from 2023-02-25 09-59-33](https://user-images.githubusercontent.com/107212599/221361208-24b15fe4-cca9-4bf2-87be-04084a483e48.png)
+![Screenshot from 2023-02-25 09-59-52](https://user-images.githubusercontent.com/107212599/221361209-f10b3ddb-c506-4bdc-b99e-1083a6d75065.png)
+![Screenshot from 2023-02-25 09-58-55](https://user-images.githubusercontent.com/107212599/221361200-3db01c47-c6c8-4963-aa71-439ebf1ff856.png)
